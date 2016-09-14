@@ -1,0 +1,76 @@
+<div  ng-controller="SupplierController as supplierCtrl">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a ui-sref="index">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Divisions</span>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div class="btn-group pull-right">
+                <button type="button" class="btn grey-salsa btn-sm btn-outline dropdown-toggle" data-toggle="dropdown"> Actions
+                    <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li>
+                        <a ui-sref="new-supplier">
+                            <i class="icon-plus"></i> New Supplier</a>
+                    </li>
+                    <li>
+                        <a ng-show="supplierCtrl.showDeleteOption == false" ng-click="supplierCtrl.showDelete()">
+                            <i class="icon-trash"></i> Delete</a>
+                    </li>
+                    <li>
+                        <a ng-show="supplierCtrl.showDeleteOption" ng-click="supplierCtrl.hideDelete()">
+                            <i class="icon-arrow-left"></i> Cancel Delete</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h1 class="page-title" ng-show="supplierCtrl.showDeleteOption == false">Suppliers</h1>
+    <h1 class="page-title" ng-show="supplierCtrl.showDeleteOption">Delete Suppliers</h1>
+    <div class="col-md-12">
+        <div class="portlet box grey-salsa">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i></i>Information Table</div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-scrollable">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th ng-show="supplierCtrl.showDeleteOption"> Delete </th>
+                            <th> # </th>
+                            <th> Name </th>
+                            <th> Country </th>
+                            <th> Contact Person </th>
+                            <th> Telephone </th>
+                            <th> Email </th>
+                            <th> Website </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="supplier in supplierCtrl.global.suppliers | orderBy: 'nickName'">
+                            <td ng-show="supplierCtrl.showDeleteOption">
+                                <button type="button" ng-click="supplierCtrl.deleteSupplier(supplier._id)" class="btn btn-xs red-mint icon-trash"></button>
+                            </td>
+                            <td> {{supplier._id}} </td>
+                            <td> {{supplier.nickName}} </td>
+                            <td> {{supplier.country}} </td>
+                            <td>  {{supplier.contactPerson.firstName + " " + supplier.contactPerson.lastName}} </td>
+                            <td> {{supplier.contactPerson.phoneNumber}} </td>
+                            <td> <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{supplier.contactPerson.email}}" target="_blank" class="btn green-jungle btn-xs">Send Email</a> </td>
+                            <td> <a href="{{supplier.website}}" target="_blank" class="btn blue-madison btn-xs">Jump to Website</a> </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

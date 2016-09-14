@@ -1,0 +1,145 @@
+<div  ng-controller="ArtistController as artCtrl">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a ui-sref="index">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Divisions</span>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a ui-sref="artists">Artists</a>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div class="btn-group pull-right">
+                <button type="button" class="btn grey-salsa btn-sm btn-outline dropdown-toggle" data-toggle="dropdown"> Actions
+                    <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li>
+                        <a ui-sref="artists">
+                            <i class="icon-arrow-left"></i> Back to Artists</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h1 class="page-title">New Artist</h1>
+    <div class="portlet light bordered">
+        <div class="portlet-body form">
+            <form ng-submit="artCtrl.submit()">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="First Name" ng-model="artCtrl.artist.firstName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Payment Platform</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-credit-card"></i>
+                                    </span>
+                                    <div class="form-group">
+                                        <select class="form-control" ng-options="platform for platform in artCtrl.global.platforms" ng-model="artCtrl.artist.paymentPlatform"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Last Name" ng-model="artCtrl.artist.lastName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Payment Method</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-credit-card"></i>
+                                    </span>
+                                    <div class="form-group">
+                                        <select class="form-control" ng-options="method for method in artCtrl.global.methods" ng-model="artCtrl.artist.paymentMethod"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Email Address" ng-model="artCtrl.artist.email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label id="billing-address-header">Billing Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Billing Address" ng-model="artCtrl.artist.billingAddress">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label></label>
+                                <div class="md-checkbox">
+                                    <input type="checkbox" id="checkbox33" class="md-check">
+                                    <label for="checkbox33">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> Same as Email </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Portfolio Link</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-link"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Portfolio Link" ng-model="artCtrl.artist.portfolio">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions right">
+                    <button type="button" class="btn default" ng-click="artCtrl.clear()">Clear</button>
+                    <button type="submit" class="btn green-jungle">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

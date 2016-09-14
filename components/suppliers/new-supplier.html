@@ -1,0 +1,143 @@
+<div ng-controller="SupplierController as supplierCtrl">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a ui-sref="index">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Divisions</span>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a ui-sref="suppliers">Suppliers</a>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div class="btn-group pull-right">
+                <button type="button" class="btn grey-salsa btn-sm btn-outline dropdown-toggle" data-toggle="dropdown"> Actions
+                    <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li>
+                        <a ui-sref="suppliers">
+                            <i class="icon-arrow-left"></i> Back to Suppliers</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h1 class="page-title">New Supplier</h1>
+    <div class="portlet light bordered">
+        <div class="portlet-body form">
+            <form ng-submit="supplierCtrl.submit()">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h4>General Information</h4>
+                            <br>
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Full Name" ng-model="supplierCtrl.supplier.fullName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <h4>Contact Person Information</h4>
+                            <br>
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="First Name" ng-model="supplierCtrl.supplier.contractPerson.firstName">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Short Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Short Name" ng-model="supplierCtrl.supplier.nickName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Last Name" ng-model="supplierCtrl.supplier.contractPerson.lastName">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Country</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-map"></i>
+                                    </span>
+                                    <select class="form-control" ng-options="country.name for country in supplierCtrl.global.countries" ng-model="supplierCtrl.supplier.country"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Email Address" ng-model="supplierCtrl.supplier.contractPerson.email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Website</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-link"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Website" ng-model="supplierCtrl.supplier.website">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Phone Number" ng-model="supplierCtrl.supplier.contractPerson.phoneNumber">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions right">
+                    <button type="button" class="btn default" ng-click="supplierCtrl.clear()">Clear</button>
+                    <button type="submit" class="btn green-jungle">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

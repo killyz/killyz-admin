@@ -1,0 +1,81 @@
+<div ng-controller="ModelController as modelCtrl">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a ui-sref="index">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Products</span>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div class="btn-group pull-right">
+                <button type="button" class="btn grey-salsa btn-sm btn-outline dropdown-toggle" data-toggle="dropdown"> Actions
+                    <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li>
+                        <a ui-sref="models">
+                            <i class="icon-arrow-left"></i> Back to Models</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h1 class="page-title">New Model</h1>
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="portlet light bordered">
+            <div class="portlet-body form">
+                <form class="form-body container-fluid" ng-submit="modelCtrl.submit()">
+                    <div class="row fileinput" data-provides="fileinput">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 276px; height: 350px; max-width: 276px; max-height: 350px"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label> Title </label>
+                                <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-anchor"></i>
+                                        </span>
+                                    <input type="text" class="form-control" placeholder="Title" ng-model="modelCtrl.model.title">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Artist</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <div class="form-group">
+                                        <select class="form-control" ng-options="artist.firstName + ' ' + artist.lastName for artist in modelCtrl.global.artists | orderBy: 'firstName'" ng-model="modelCtrl.model.artist"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Upload</label>
+                                <div class="input-group">
+                                    <span class="btn blue-madison fileinput-button">
+                                        <i class="fa fa-plus"></i>
+                                        <span> Add Image... </span>
+                                        <input type="file" file-model="modelCtrl.model.image">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-actions right">
+                        <button type="button" class="btn default" ng-click="modelCtrl.clear()" data-dismiss="fileinput">Clear</button>
+                        <button type="submit" class="btn green-jungle">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>

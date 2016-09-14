@@ -1,0 +1,76 @@
+<div  ng-controller="ArtistController as artCtrl">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a ui-sref="index">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Divisions</span>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div class="btn-group pull-right">
+                <button type="button" class="btn grey-salsa btn-sm btn-outline dropdown-toggle" data-toggle="dropdown"> Actions
+                    <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li>
+                        <a ui-sref="new-artist">
+                            <i class="icon-plus"></i> New Artist</a>
+                    </li>
+                    <li>
+                        <a ng-show="artCtrl.showDeleteOption == false" ng-click="artCtrl.showDelete()">
+                            <i class="icon-trash"></i> Delete</a>
+                    </li>
+                    <li>
+                        <a ng-show="artCtrl.showDeleteOption" ng-click="artCtrl.hideDelete()">
+                            <i class="icon-arrow-left"></i> Cancel Delete</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h1 class="page-title" ng-show="artCtrl.showDeleteOption == false">Artists</h1>
+    <h1 class="page-title" ng-show="artCtrl.showDeleteOption">Delete Artists</h1>
+    <div class="col-md-12">
+        <div class="portlet box grey-salsa">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i></i>Information Table</div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-scrollable">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th ng-show="artCtrl.showDeleteOption"> Delete </th>
+                            <th> # </th>
+                            <th> Name </th>
+                            <th> Number of Models </th>
+                            <th> Payment Platform </th>
+                            <th> Payment Method </th>
+                            <th> Email </th>
+                            <th> Portfolio </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="artist in artCtrl.global.artists | orderBy: 'firstName'">
+                            <td ng-show="artCtrl.showDeleteOption">
+                                <button type="button" ng-click="artCtrl.deleteArtist(artist._id)" class="btn btn-xs red-mint icon-trash"></button>
+                            </td>
+                            <td> {{artist._id}} </td>
+                            <td> {{artist.firstName + " " + artist.lastName}} </td>
+                            <td> {{artist.modelCount}} </td>
+                            <td> {{artist.paymentPlatform}} </td>
+                            <td> {{artist.paymentMethod}} </td>
+                            <td> <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{artist.email}}" target="_blank" class="btn green-jungle btn-xs">Send Email</a> </td>
+                            <td> <a href="{{artist.portfolio}}" target="_blank" class="btn blue-madison btn-xs">Jump to Portfolio</a> </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

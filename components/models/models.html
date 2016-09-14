@@ -1,0 +1,82 @@
+<div ng-controller="ModelController as modelCtrl">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a ui-sref="index">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Products</span>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div class="btn-group pull-right">
+                <button type="button" class="btn grey-salsa btn-sm btn-outline dropdown-toggle" data-toggle="dropdown"> Actions
+                    <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li>
+                        <a ui-sref="new-model">
+                            <i class="icon-plus"></i> New Model</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h1 class="page-title">Models</h1>
+    <div class="portlet light portlet-fit bordered">
+        <div class="portlet-body">
+            <div class="mt-element-card mt-element-overlay">
+                <div class="row">
+                    <div ng-repeat="model in modelCtrl.global.models | orderBy: 'title'">
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="mt-card-item">
+                                <div class="mt-card-avatar mt-overlay-1 mt-scroll-down">
+                                    <img src="ftp://10.0.0.2:58950/models/{{model._id}}.jpg" />
+                                    <div class="mt-overlay mt-top">
+                                        <!--<ul class="mt-info">-->
+                                            <!--<li>-->
+                                                <!--<a class="btn default btn-outline" href="javascript:;">-->
+                                                    <!--<i class="icon-magnifier"></i>-->
+                                                <!--</a>-->
+                                            <!--</li>-->
+                                            <!--<li>-->
+                                                <!--<a class="btn default btn-outline" href="javascript:;">-->
+                                                    <!--<i class="icon-link"></i>-->
+                                                <!--</a>-->
+                                            <!--</li>-->
+                                        <!--</ul>-->
+                                    </div>
+                                </div>
+                                <div class="mt-card-content">
+                                    <h3 class="mt-card-name">"{{model.title}}"</h3>
+                                    <p class="mt-card-desc font-grey-mint">Art By: {{modelCtrl.getArtistName(model.artistId)}}</p>
+                                    <p class="mt-card-desc font-grey-mint">Number of Products: {{model.upcList.length}}</p>
+                                    <!--<div class="mt-card-social">-->
+                                        <!--<ul>-->
+                                            <!--<li>-->
+                                                <!--<a href="javascript:;">-->
+                                                    <!--<i class="icon-social-facebook"></i>-->
+                                                <!--</a>-->
+                                            <!--</li>-->
+                                            <!--<li>-->
+                                                <!--<a href="javascript:;">-->
+                                                    <!--<i class="icon-social-twitter"></i>-->
+                                                <!--</a>-->
+                                            <!--</li>-->
+                                            <!--<li>-->
+                                                <!--<a href="javascript:;">-->
+                                                    <!--<i class="icon-social-dribbble"></i>-->
+                                                <!--</a>-->
+                                            <!--</li>-->
+                                        <!--</ul>-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
